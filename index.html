@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="container">
+            <h3 style="text-align: center">todos</h3>
+
+            <input type="txt" id="todolist-input">
+
+
+            <ol id="todolist-items">
+            </ol>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            console.log("jQuery lock'n load!");
+            //console.log("jQuery lock'n load");
+            //+1. click to todolist-input
+            //+2. enter an input to todolist-input
+            //+3. press to the todolis-input's enter key
+            //+4. get todolist-input value
+            //+5. create li item with input value
+            //+6. add li to the todolist-items
+            /*+7. clear todolist-input everytime!
+            8.~put check box before todolist-items
+            9. when checkbox is checked make todolist-item crossed not hide!
+            */
+
+            $("#todolist-input").on("keypress", function (e) {
+                if (e.which == 13) {
+                    var x = $(this).val();
+                    var input = $('<input type="checkbox" class=" todolist-checkbox" />')
+                    var li = $(`<li class="xxx"> <span class="todolist-span">${x}</span></li>`);
+
+                    input.change(function () {
+                        if ($(this).is(':checked')) {
+                            console.log('Checked');
+                            $(".todolist-span").css('text-decoration', 'line-through');
+                        };
+                    })
+
+                    li.prepend(input);
+                    $("#todolist-items").append(li);
+                    $("#todolist-input").val('');
+                };
+            })
+
+
+        });
+    </script>
+</body>
+
+</html>
